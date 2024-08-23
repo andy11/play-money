@@ -50,21 +50,9 @@ export async function GET(
           href: '/questions',
         },
         {
-          title: 'Create a market',
-          award: DAILY_MARKET_BONUS_PRIMARY,
-          completed: hasCreatedMarket,
-          href: '/create-post',
-        },
-        {
           title: 'Write a comment',
           award: DAILY_COMMENT_BONUS_PRIMARY,
           completed: hasCommented,
-          href: '/questions',
-        },
-        {
-          title: 'Boost liquidity in a market',
-          award: DAILY_LIQUIDITY_BONUS_PRIMARY,
-          completed: hasBoostedLiquidity,
           href: '/questions',
         },
       ],

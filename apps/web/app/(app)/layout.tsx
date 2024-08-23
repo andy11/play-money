@@ -15,23 +15,7 @@ function MainNav({
   renderItemWrap = (children) => children,
   ...props
 }: React.HTMLAttributes<HTMLElement> & { renderItemWrap?: (children: React.ReactNode) => React.ReactNode }) {
-  return (
-    <nav className={cn('flex items-center text-sm', className)} {...props}>
-      {renderItemWrap(
-        <Link className="font-medium transition-colors hover:text-primary" href="/questions">
-          Markets
-        </Link>
-      )}
-      {renderItemWrap(
-        <Link className="font-medium transition-colors hover:text-primary" href="/create-post">
-          Create Market
-        </Link>
-      )}
-      {renderItemWrap(
-        <GlobalSearchTriggerLink className="h-auto text-[length:inherit] text-foreground transition-colors hover:text-primary" />
-      )}
-    </nav>
-  )
+  return
 }
 
 export default async function AppLayout({ children }: { children: React.ReactNode }) {
@@ -42,6 +26,8 @@ export default async function AppLayout({ children }: { children: React.ReactNod
   } catch (_error) {
     // Ignore
   }
+  let siteTitle
+  siteTitle = process.env.SITE_TITLE
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -65,15 +51,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
             </SheetContent>
           </Sheet>
           <Link className="flex items-center gap-2" href="/">
-            <span className="text-lg font-bold tracking-tight text-muted-foreground">PlayMoney</span>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Badge className="hidden md:block" variant="outline">
-                  ALPHA
-                </Badge>
-              </TooltipTrigger>
-              <TooltipContent>All markets and balances are temporary</TooltipContent>
-            </Tooltip>
+            <span className="text-lg font-bold tracking-tight text-muted-foreground">{siteTitle}</span>
           </Link>
           <MainNav className="hidden gap-6 md:flex" />
 
@@ -87,18 +65,6 @@ export default async function AppLayout({ children }: { children: React.ReactNod
       <div className="mx-auto flex w-full max-w-screen-xl flex-1 space-y-4 p-4 md:p-8">{children}</div>
 
       <div className="mx-auto flex gap-4 p-4 text-sm text-muted-foreground md:p-8">
-        <a className="hover:underline" href="https://discord.gg/3vgjSYT3" rel="noreferrer" target="_blank">
-          Join the discord
-        </a>
-        —
-        <a
-          className="hover:underline"
-          href="https://github.com/casesandberg/play-money"
-          rel="noreferrer"
-          target="_blank"
-        >
-          Open source
-        </a>
       </div>
     </div>
   )

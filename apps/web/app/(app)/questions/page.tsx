@@ -18,11 +18,6 @@ export default async function AppQuestionsPage() {
           <div className="pb-2 text-xs font-semibold uppercase text-muted-foreground">Recent trades</div>
           <RecentTrades />
         </div>
-
-        <div>
-          <div className="pb-2 text-xs font-semibold uppercase text-muted-foreground">New liquidity</div>
-          <RecentLiquidity />
-        </div>
       </div>
     </div>
   )
